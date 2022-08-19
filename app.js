@@ -43,19 +43,23 @@ app.post("/users/:userId", async (req, res) => {
 
 app.put("/users/:userId/update", async (req, res) => {
   const payload = req.body;
-  const { params } = req;
-  const doesUserExit = await User.exists({ userId: params.userId });
-  if (!doesUserExit) {
-    res.status(400).send("user not found");
+  var checkkey = ["led", "ldr", "button"];
+  if (req.body.constructor === Object && Object.keys(req.body).length === 0) {
+    res.status(400).end("Please fill the body before sending request.");
   } else {
-    const { userId } = req.params;
-    await User.findOneAndUpdate(
-      { userId: userId },
-      { $set: payload },
-      {new: true},
-    );
-    res.status(200).send("update finished");
-   
+    const { params } = req;
+    const doesUserExit = await User.exists({ userId: params.userId });
+    if (!doesUserExit) {
+      res.status(400).send("user not found");
+    } else {
+      const { userId } = req.params;
+      await User.findOneAndUpdate(
+        { userId: userId },
+        { $set: payload },
+        { new: true }
+      );
+      res.status(200).send("update finished");
+    }
   }
 });
 
