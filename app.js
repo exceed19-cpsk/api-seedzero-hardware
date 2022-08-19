@@ -70,7 +70,7 @@ app.get("/users/:userId", async (req, res) => {
     res.status(400).send("user not found");
   } else {
     const { userId } = req.params;
-    const user = await User.findOne({ userId: userId });
+    const user = await User.findOne({ userId: userId },{'_id': 0}).select('userId led button ldr');
     res.json(user);
   }
 });

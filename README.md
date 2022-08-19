@@ -29,18 +29,17 @@ user exists
 ### 3. `GET` /users/\<userId\>
 if you registered you can see your data from this request.
 
+Will show `userId` `led` `button` `ldr`
 
 #### Examples
 
 **if userId exist**
 ```json
 {
-  "_id": "62ff0d4f67e0bc9d90944a0c",
-  "userId": "6310500256",
+  "userId": "6310500287",
   "led": "0",
   "button": "0",
-  "ldr": "1000",
-  "__v": 0
+  "ldr": "1000"
 }
 ```
 **if userId not exists**
@@ -61,3 +60,5 @@ update finished
 ``` 
 Please fill the body before sending request.
 ```
+
+if This method success when you call `GET` /users/\<userId\> value must change too.
