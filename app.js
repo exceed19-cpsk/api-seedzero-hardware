@@ -46,7 +46,11 @@ app.put("/users/:userId/update", async (req, res) => {
   var checkkey = ["led", "ldr", "button"];
   if (req.body.constructor === Object && Object.keys(req.body).length === 0) {
     res.status(400).end("Please fill the body before sending request.");
-  } else {
+  }
+  else if (payload.hasOwnProperty("userId")){
+    res.status(400).end("userId can't change.");
+  }
+   else {
     const { params } = req;
     const doesUserExit = await User.exists({ userId: params.userId });
     if (!doesUserExit) {
