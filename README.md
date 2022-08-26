@@ -1,4 +1,4 @@
-## ZeedZero backend API for Hardware section
+## Seed:  Zero backend API for Hardware section
 **Note** all datatype on this api is `string`
 
 ### 1. `GET` /
