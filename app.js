@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 require("dotenv").config();
 
 const app = express();
+const cors = require('cors')
 const port = process.env.PORT || 3000;
 const User = require("./models/user");
 
@@ -10,6 +11,7 @@ mongoose.connect(process.env.DB_URI, {
   useNewUrlParser: true,
 });
 app.use(express.json());
+app.use(cors());
 app.get("/", function (req, res) {
   var today = new Date();
   var time = today.toLocaleString("en-US", {
